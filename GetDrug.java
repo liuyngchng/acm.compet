@@ -39,14 +39,14 @@ public class GetDrug {
         Scanner sc=new Scanner(System.in);
         T=sc.nextInt();
         C=sc.nextInt();
-        int[] t=new int[100];
-        int[] v=new int[100];
+        int[] t=new int[T+10];
+        int[] v=new int[C+10];
         for (int i=1;i<= C;i++){
             t[i]=sc.nextInt();
             v[i]=sc.nextInt();
         }
         sc.close();
-        int[][] f=new int[100][100];
+        int[][] f=new int[C+10][T+10];
         f[0][0]=0;
         for (int i=1;i<=C;i++) {
             for (int j=1; j<=T;j++){
