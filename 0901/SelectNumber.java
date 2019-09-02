@@ -27,8 +27,8 @@ public class SelectNumber {
      * 一共要选取k个数字,开始选第index个数字,目前还剩下rest个数字需要选,
      * 已经选择的数字进行求和的值为sum.满足 index + rest -1 = k
      * 因为k <= n 
-     * ==> index + rest -1 <= n
-     * ==> rest <= n - index + 1
+     * ==> index+rest-1<= n
+     * ==> rest<=n-index+1
      * @param index 开始考虑第index个数字
      * @param rest 当前还剩多少个数字没选
      * @param sum 当前已经选择的数字的和
