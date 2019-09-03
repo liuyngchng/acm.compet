@@ -29,16 +29,18 @@ public class DeleteChar {
         a=sc.nextLine();
         b=sc.nextLine();
         f=new int[l+10][l+10];
-        f[0][0]=0;
-        for(int i=1;i<=l;i++)
-            for(int j=1;j<=l;j++)
-                f[i][j]=Integer.MAX_VALUE;
-        for(int i=1;i<=l;i++)
-            for(int j=1;j<=l;j++){
-                if(i<=a.length()&&j<=b.length()&&a.charAt(i-1)==b.charAt(j-1))
+        for(int i=0;i<l+10;i++)
+            for(int j=0;j<l+10;j++)
+                if(i==0||j==0)
+                    f[i][j]=i+j;
+                else
+                    f[i][j]=Integer.MAX_VALUE;
+        for(int i=1;i<=a.length();i++)
+            for(int j=1;j<=b.length();j++)
+                if(a.charAt(i-1)==b.charAt(j-1))
                     f[i][j]=f[i-1][j-1];
-                f[i][j]=Math.min(f[i][j-1],f[i-1][j])+1;
-            }
+                else
+                    f[i][j]=Math.min(f[i][j-1],f[i-1][j])+1;
         System.out.println(f[a.length()][b.length()]);
     }
 }
