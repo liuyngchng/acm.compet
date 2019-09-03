@@ -5,5 +5,10 @@
  * 出栈4，直到1可以入栈，
  */
 public class P1969 {
+	public static void main(String[] args) {
+		Integer.MAX_VALUE;
+		Integer.MIN_VALUE;
+		
+	}
 
 }

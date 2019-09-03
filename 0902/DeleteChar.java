@@ -25,7 +25,20 @@ public class DeleteChar {
     public static void main(String[] args){
         Scanner sc=new Scanner(System.in);
         l=sc.nextInt();
-        a=sc.nextString();
-        b=sc.nextString();
+        sc.nextLine();
+        a=sc.nextLine();
+        b=sc.nextLine();
+        f=new int[l+10][l+10];
+        f[0][0]=0;
+        for(int i=1;i<=l;i++)
+            for(int j=1;j<=l;j++)
+                f[i][j]=Integer.MAX_VALUE;
+        for(int i=1;i<=l;i++)
+            for(int j=1;j<=l;j++){
+                if(i<=a.length()&&j<=b.length()&&a.charAt(i-1)==b.charAt(j-1))
+                    f[i][j]=f[i-1][j-1];
+                f[i][j]=Math.min(f[i][j-1],f[i-1][j])+1;
+            }
+        System.out.println(f[a.length()][b.length()]);
     }
 }
