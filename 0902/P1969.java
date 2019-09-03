@@ -17,16 +17,11 @@ public class P1969 {
         int n=sc.nextInt();
         for(int i=1;i<=n;i++)
             h[i]=sc.nextInt();
-        h[n+1]=0;
-        Deque<Integer> q = new ArrayDeque<>();
-        for(int i=1;i<=n+1;i++) {
-        	if(q.isEmpty()){
-                q.push(h[i]);
-        		continue;
-        	}
-        	if(h[i]>q.getFirst()){
-        		q.push(h[i]);
-        	}else if(h[i]==q.getFirst()){
+        Deque<Integer> q=new ArrayDeque<>();
+        for(int i=1;i<=n;i++){
+        	if(q.isEmpty()||h[i]>q.peekFirst()){
+        			q.push(h[i]);
+        	}else if(h[i]==q.peekFirst()){
         		continue;
         	}else{
         		Integer b=-1;
@@ -36,10 +31,15 @@ public class P1969 {
         				break;
         			} else {
 	        			b=q.pop();
-	        			ans++;
+                        if(q.isEmpty())
+	        			    ans+=b;
+                        else
+                            ans+=b-q.peekFirst();
         			}
         		}while(b>h[i]);
-        		if(h[i]>b) q.push(h[i]);
+        		if(b<h[i]){
+        			    q.push(h[i]);
+        		}
         		else continue;
         	}
         }
