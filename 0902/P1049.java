@@ -8,7 +8,7 @@
  * (3) f[i][j]=f[i-1][j];       //不使用第i个方块
  *  i   1   2   3   4
  *  v   4   5   1   2
- *  f[1][1]=0,....,f[1][4]=1,0,....,
+ *  f[1][1]=0,....,f[1][4]=1,0,..,f[1][9]=1,0
  *  f[2][1]=0,...,f[2][4]=1,...,f[2][9]=1
  * 4.ans
  * ans=V-max(j) if(f[n][j]==1)
@@ -26,11 +26,13 @@ public class P1049 {
         for(int i=1;i<=n;i++)
             v[i]=sc.nextInt();
         f[0][0]=1;
-        for(int i=1;i<=n;i++)
-            for(int j=1;j<=V;j++){
-                f[i][j]=f[i-1][j];
-                if(j-v[i]>=0)
-                    f[i][j]=f[i-1][j-v[i]];
+        for(int i=0;i<=n;i++)
+            for(int j=0;j<=V;j++){
+                if(f[i][j]==0)continue;
+                if(i+1>n)continue;
+                f[i+1][j]=f[i][j];
+                if(j+v[i]>V)continue;
+                f[i+1][j+v[i]]=f[i][j];
             }
         int max=0;
         for(int j=1;j<=V;j++)
